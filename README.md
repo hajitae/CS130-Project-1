@@ -1,2 +1,2 @@
 # CS130-Project-1
-Ray Tracing
+Ray Tracing Project developed for University of California, Riverside in CS130.
