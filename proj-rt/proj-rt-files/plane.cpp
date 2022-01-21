@@ -8,8 +8,31 @@
 // to record a hit with t=0 as the first entry in hits.
 Hit Plane::Intersection(const Ray& ray, int part) const
 {
-    TODO;
-    return {0,0,0};
+    Hit intersection;
+    intersection.object = NULL;
+
+    /*
+    t = ((p-e).n) / (u.n)
+    If t is greater than 0, then there is an intersection.
+    If t is equal to 0, then the ray never touches plane.
+    If t is equal to infinity, then the ray never leaves.
+    */
+    vec3 x = x1 - ray.endpoint;
+    double num = dot(x, normal);
+    double denom = dot(ray.direction, normal);
+
+    if(denom != 0){
+        double t = num / denom;
+        
+        if(t > 0)
+        {
+            intersection.object = this;
+            intersection.dist = t;
+            intersection.part = part;
+        }
+    }
+
+    return intersection;
 }
 
 vec3 Plane::Normal(const vec3& point, int part) const
