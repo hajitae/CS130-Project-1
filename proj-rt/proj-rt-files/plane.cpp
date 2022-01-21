@@ -24,8 +24,7 @@ Hit Plane::Intersection(const Ray& ray, int part) const
     if(denom != 0){
         double t = num / denom;
         
-        if(t > 0)
-        {
+        if(t > 0){
             intersection.object = this;
             intersection.dist = t;
             intersection.part = part;
